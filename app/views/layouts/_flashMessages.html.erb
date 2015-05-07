@@ -1,0 +1,9 @@
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div id="flash-outer" class="navbar-fixed-top">
+      <div class="container-fluid alert alert-<%=name.to_s == 'notice' ? 'success' : 'danger' %>"
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

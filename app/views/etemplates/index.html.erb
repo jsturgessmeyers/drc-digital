@@ -1,0 +1,20 @@
+<% @bg_url = '../images/home-bg3.jpg' %>
+<%= render 'layouts/bg_img' %>
+
+<div id="template-container" class="transitions-enabled">
+  <% @etemplates.each do |etemplate| %>
+    <div class="template-thumb panel panel-default">
+      <%= link_to image_tag(etemplate.image.url(:original)), etemplate %>
+
+        <% if current_user.try(:admin?) %>
+        <div class="panel-body">
+          <div class="actions">
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_etemplate_path(etemplate) %>
+            &nbsp;|&nbsp;
+            <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, etemplate, method: :delete, data: {confirm: 'Really delete?'} %>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  <% end %>
+</div>

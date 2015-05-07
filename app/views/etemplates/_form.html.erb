@@ -1,0 +1,42 @@
+<%= form_for @etemplate, :html => { :multipart => true } do |f| %>
+  <% if @etemplate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@etemplate.errors.count, "error") %> prohibited this etemplate from being saved:</h2>
+
+      <ul>
+      <% @etemplate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="jumbotron jumbo-clear jumbo-form text-center vertical-center">
+    <div class="container">
+      <h1>Create or Edit</h1>
+      <form role="form">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn upload-btn-clear">
+              <span class="btn btn-file">Upload an image<%= f.file_field :image, class: "form-control" %></span>
+            </span>
+            <%= f.text_field :name, :value => '', class: "form-control", :class => "file-upload-field", readonly: true %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :name, class: "form-control", :class => "input-field", :placeholder => "Name" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :description, class: "form-control", :class => "input-field", :placeholder => "Description" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :codepen_data, class: "form-control", :class => "input-field", :placeholder => "CodePen snippet" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'OK', class: "btn btn-clear" %>
+          <%= link_to 'Cancel', etemplates_path, :class => "btn btn-link" %>
+        </div>
+      </form>
+    </div>
+  </div>
+<% end %>

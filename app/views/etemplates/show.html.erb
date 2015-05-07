@@ -1,0 +1,23 @@
+<% @bg_url = '../images/home-bg4.jpg' %>
+<%= render 'layouts/bg_img' %>
+
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading center">
+          <%= raw @etemplate.codepen_data %>
+        </div>
+        <div class="panel-body">
+          <h3><%= @etemplate.name %></h3>
+          <p><%= @etemplate.description %></p>
+
+          <% if current_user.try(:admin?) %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_etemplate_path(@etemplate) %>
+            &nbsp;|&nbsp;
+          <% end %>
+          <%= link_to 'Back to Gallery', etemplates_path %>
+
+        </div>
+      </div>
+    </div>
+  </div>
